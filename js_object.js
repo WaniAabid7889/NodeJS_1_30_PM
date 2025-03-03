@@ -58,5 +58,5 @@ let arrayObj = [
 const greet = (name)=>{
     console.log('Hello Dear! Welcome to our course',name);
 }
-
 greet("Shandan");
+

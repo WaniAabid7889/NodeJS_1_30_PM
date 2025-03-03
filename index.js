@@ -38,15 +38,15 @@
 // }
 // console.log(name1);
 
-let arr=[
-    1,
-    2,
-    3,
-    4,
-    5,
-    [46,75,67,27],
-    ['abid','shadan','faizan']
-]; 
+// let arr=[
+//     1,
+//     2,
+//     3,
+//     4,
+//     5,
+//     [46,75,67,27],
+//     ['abid','shadan','faizan']
+// ]; 
 
 // console.log(typeof arr);
 // console.log(typeof arr[0]);
@@ -62,13 +62,13 @@ let arr=[
 //     }
 // })
 
-arr.forEach((val,key,[arr])=>{
-    console.table({val,key});
-})
+// arr.forEach((val,key,[arr])=>{
+//     console.table({val,key});
+// })
 
-let brr = ['1','2','3','4','5'];
+// let brr = ['1','2','3','4','5'];
 
-console.table(brr);
+// console.table(brr);
 
 
 // let filterArr = brr.filter((val)=>{
@@ -100,5 +100,6 @@ console.table(brr);
 
 
 
-let total = brr.map(Number).reduce((res, current) => res + current, 0);
-console.log(total);
+// let total = brr.map(Number).reduce((res, current) => res + current, 0);
+// console.log(total);
+
