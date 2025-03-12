@@ -1,0 +1,6 @@
+{
+  "dependencies": {
+    "create-react-app": "^5.1.0",
+    "nodemon": "^3.1.9"
+  }
+}
