@@ -1,53 +1,74 @@
-const express = require('express');
+const express = require("express");
 const app = express();
 const port = 1900;
-const path = require('path');
 
-const getUser = async() =>{
-    const response = await fetch('https://jsonplaceholder.typicode.com/users');
-    const result = await response.json();
-    return result;
-}
+const url = require('url');
+app.use(express.json());
+
+let users = [
+  {
+    id: 100,
+    name: "abid",
+    address: "Delhi Gate Ajmer",
+  },
+  {
+    id: 101,
+    name: "Hussain",
+    address: "Delhi Gate Ajmer",
+  },
+  {
+    id: 102,
+    name: "shadan",
+    address: "Delhi Gate Ajmer",
+  },
+];
+
+// app.get("/user", (req, res) => {
+//   let data = req.body;
+//   console.log(data);
+//   res.send(data);
+// });
+
+app.get("/user/:id?", (req, res) => {
+  //params
+  let id = req.params.id;
+
+  users.some((val) => {
+    if (val.id == id) {
+      res.send(users[val]);
+    }
+  });
 
 
-app.get('/user',(req,res)=>{
-    let user =  getUser();
-    user.then((val)=>{
-        res.send(val);
-    }).catch((err)=>{
-        res.send(err);
-    })
+ app.get("/query",(req,res)=>{
+  let data = req.query;
+  console.log(data);
+  res.json(data);
+})
+
+
+//   users.findIndex((val, index) => {
+//     if (val.id === parseInt(id)) {
+//       res.send(val);
+//     } else {
+//       res.status(404).send({ message: "User not found" });
+//     }
+//   });
 });
 
-app.get('/user1',async (req,res)=>{
-    let user =await  getUser();
-    res.send(user);
-});
-
-app.get('/home', (req, res) => {
-  res.sendFile(path.join(__dirname, 'view', 'home.html'));
-});
-
-app.get('/header',(req,res)=>{
-    res.sendFile(path.join(__dirname, 'view', 'header.html'));
-});
-
-app.get('/about',(req,res,next)=>{
-    next();
+app.post("/insert", (req, res) => {
+    let data = req.body;
+    users.push(data);
+    console.log(users);
+    // res.send(users);
+    res.json({data : users, message : "record add successfully"});
     
-},(req,res)=>{ 
-    res.sendFile(path.join(__dirname, 'view', 'about.html'));
 });
 
+app.get("/", (req, res) => {
+  res.send("welcome to our express js class");
+});
 
-
-app.get('/',(req,res)=>{
-    res.send("welcome to our express js class");
-})
-
-app.listen(port,()=>{
-    console.log(`our website is running : http://localhost:${port}`);
-})
-
-// you need to install npm i express and npm i nodemon
-// we you run your application then use this command npx nodemon index.js
+app.listen(port, () => {
+  console.log(`our website is running : http://localhost:${port}`);
+});
