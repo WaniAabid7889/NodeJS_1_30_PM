@@ -40,3 +40,4 @@ module.exports = (app) =>{
 
     app.use('/user',router);
 }
+
